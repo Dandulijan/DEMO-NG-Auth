@@ -1,1 +1,31 @@
-<p>notes-component works!</p>
+<div class="flex flex-end">
+  <button class="btn-green" routerLink="/new">Add Note</button>
+</div>
+<ul style="list-style: none; padding: 0; margin: 0">
+  @for (note of $NoteList(); track note._id) {
+  <li
+    style="
+      margin-bottom: 12px;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      cursor: pointer;
+    "
+    onmouseover="this.style.backgroundColor='#f5f7fa'; this.style.transform='scale(1.01)'"
+    onmouseout="this.style.backgroundColor='#fff'; this.style.transform='scale(1)'"
+  >
+    <div [routerLink]="['/notes', note._id]">
+      <img
+        [src]="`http://task-react-auth-backend.eapi.joincoded.com/${note.user.image}`"
+        alt="Avatar"
+        class="avatar"
+      />
+      <h3 style="margin: 0 0 4px; font-size: 1.1rem">{{ note.title }}</h3>
+      <p style="margin: 0; color: #555">{{ note.body }}</p>
+    </div>
+  </li>
+  }
+</ul>

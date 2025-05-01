@@ -1,1 +1,10 @@
-<p>note-details-component works!</p>
+<h2>{{ noteDetails()?.title }}</h2>
+<p><strong>Topics:</strong> {{ noteDetails()?.topic }}</p>
+<p>{{ noteDetails()?.body }}</p>
+<hr />
+<p>
+  <strong>Author:</strong> {{ noteDetails()?.user?.name }} ({{
+    noteDetails()?.user?.email
+  }})
+</p>
+<img [src]="noteDetails()?.user?.image" alt="Author image" width="100" />
